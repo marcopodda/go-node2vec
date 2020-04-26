@@ -70,7 +70,8 @@ def learn_embeddings(args, walks):
         workers=args.workers,
         iter=args.iter)
 
-    model.wv.save_word2vec_format(DATA_DIR / f"{args.namespace}_emb.txt")
+    filename = f"{args.namespace}_emb_{args.dimensions}.txt"
+    model.wv.save_word2vec_format(DATA_DIR / filename)
 
 
 def run(args):

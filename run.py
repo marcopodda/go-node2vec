@@ -47,7 +47,7 @@ def create_graph(args, edges):
     walk_length = nx.diameter(nx_G)
     degrees = dict(nx_G.degree())
     max_degree = max(list(degrees.values()))
-    num_walks = int(100 * max_degree)
+    num_walks = int(10 * max_degree)
     print(f"num_walks: {num_walks} walk_length: {walk_length}")
 
     G = Graph(nx_G, is_directed=False, p=args.p, q=args.q)

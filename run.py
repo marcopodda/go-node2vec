@@ -1,5 +1,4 @@
 import argparse
-import numpy as np
 import networkx as nx
 import pandas as pd
 from gensim.models import Word2Vec
@@ -24,8 +23,8 @@ def parse_args():
                         help='Context size for optimization. Default is 7.')
     parser.add_argument('--iter', default=5, type=int,
                         help='Number of epochs in SGD. Default is 5.')
-    parser.add_argument('--workers', type=int, default=8,
-                        help='Number of parallel workers. Default is 8.')
+    parser.add_argument('--workers', type=int, default=42,
+                        help='Number of parallel workers. Default is 42.')
     parser.add_argument('--p', type=float, default=1,
                         help='Return hyperparameter. Default is 1.')
     parser.add_argument('--q', type=float, default=1,
@@ -47,8 +46,8 @@ def create_graph(args, edges):
     # calculate node2vec parameters
     walk_length = nx.diameter(nx_G)
     degrees = dict(nx_G.degree())
-    mean_degree = np.mean(list(degrees.values()))
-    num_walks = int(10 * mean_degree)
+    max_degree = max(list(degrees.values()))
+    num_walks = int(100 * max_degree)
     print(f"num_walks: {num_walks} walk_length: {walk_length}")
 
     G = Graph(nx_G, is_directed=False, p=args.p, q=args.q)

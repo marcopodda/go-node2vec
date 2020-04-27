@@ -18,7 +18,8 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--namespace", choices=NAMESPACES, default="molecular_function",
                         help='Namespace to extract from the ontology')
-    parser.add_argument('--reducer', choices=REDUCERS.keys(), default="tsne")
+    parser.add_argument('--reducer', choices=REDUCERS.keys(), default="tsne",
+                        help="Reducer to map the embeddings into low dimensional space.")
     return parser.parse_args()
 
 
@@ -28,7 +29,6 @@ def parse_embedding_matrix(filename):
 
 
 def get_reduced_embeddings(data, reducer_name="umap"):
-    assert reducer_name in REDUCERS.keys()
     data = StandardScaler().fit_transform(data)
     reducer_class = REDUCERS[reducer_name]
     reducer = reducer_class()

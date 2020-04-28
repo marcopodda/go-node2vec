@@ -49,7 +49,7 @@ def plot_embeddings(embeddings, index=None, annotations=None, title="title"):
 if __name__ == "__main__":
     args = parse_args()
 
-    filename = f"DATA/{args.namespace}_emb.txt"
+    filename = f"DATA/{args.namespace}_emb_128.txt"
     index, data = parse_embedding_matrix(filename)
     embeddings = get_reduced_embeddings(data, reducer_name=args.reducer)
 

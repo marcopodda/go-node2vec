@@ -6,7 +6,7 @@ numpy==1.22.0
 numpy-indexed==0.3.5
 pandas==1.0.3
 pydot==1.4.1
-requests==2.31.0
+requests==2.32.4
 scikit-learn==1.5.0
 scipy==1.10.0
 statsmodels==0.11.1
